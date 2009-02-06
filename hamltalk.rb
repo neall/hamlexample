@@ -8,10 +8,21 @@ get '/' do
 end
 
 get %r{/slide(\d+)} do
-  case params[:captures][0].to_i
-  when 0
-    haml :welcome
+  @slides = [
+    :welcome,
+    :whatarethey
+  ]
+
+  @slide = params[:captures][0].to_i
+  if @slide < @slides.count then
+    if request.path_info == "/slide#{@slide}"
+      haml @slides[@slide]
+    else
+      # normalize slide urls
+      redirect "/slide#{@slide}"
+    end
   else
+    # wrap around to slide 0
     redirect '/slide0'
   end
 end
