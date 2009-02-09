@@ -10,7 +10,10 @@ end
 get %r{/slide(\d+)} do
   @slides = [
     :welcome,
-    :whatarethey
+    :whatarethey,
+    :whataretheysource,
+    :getting,
+    :haml
   ]
 
   @slide = params[:captures][0].to_i
@@ -25,4 +28,9 @@ get %r{/slide(\d+)} do
     # wrap around to slide 0
     redirect '/slide0'
   end
+end
+
+get '/main.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :main
 end

@@ -1,0 +1,69 @@
+!bgcolor = #111
+!fgcolor = #EEE
+!fontsize = 1.4em
+!h1size = 2em
+!h6size = 1em
+!hamlcolor = #4F4
+!htmlcolor = #44F
+
+h1
+  :font-size = !h1size
+h2
+  :font-size = !h1size * 0.8 + !h6size * 0.2
+h3
+  :font-size = !h1size * 0.6 + !h6size * 0.4
+h4
+  :font-size = !h1size * 0.4 + !h6size * 0.6
+h5
+  :font-size = !h1size * 0.2 + !h6size * 0.8
+h6
+  :font-size = !h6size
+
+h1, h2, h3, h4, h5, h6
+  :margin 0.5em
+
+body
+  :background
+    :color = !bgcolor
+  :color = !fgcolor
+  :text-align center
+  :font
+    :size = !fontsize
+    :family sans-serif
+
+pre
+  :text-align left
+  :background = !bgcolor
+  :border
+    :style solid
+    :width 1px
+    :color = !fgcolor
+  &.haml
+    :border
+      :style dashed
+      :color = !hamlcolor
+  &.html
+    :border
+      :style dashed
+      :color = !htmlcolor
+
+ul, ol
+  :text-align left
+  :margin
+    :right auto
+    :left auto
+  body > &
+    :width 70%
+
+tt
+  :font-size 1.3em
+  :background
+    :color = 0.8 * !bgcolor + 0.2 * !fgcolor
+
+.left
+  :float left
+  :width 49%
+
+.right
+  :float right
+  :width 49%
