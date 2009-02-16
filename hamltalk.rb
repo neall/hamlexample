@@ -13,15 +13,16 @@ get %r{/slide(\d+)} do
     :whatarethey,
     :whataretheysource,
     :getting,
-    :haml
+    :haml,
+    :singlemulti
   ]
 
   @slide = params[:captures][0].to_i
   if @slide < @slides.count then
-    if request.path_info == "/slide#{@slide}"
+    # normalize slide urls
+    if request.path_info == "/slide#{@slide}" then
       haml @slides[@slide]
     else
-      # normalize slide urls
       redirect "/slide#{@slide}"
     end
   else

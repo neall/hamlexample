@@ -1,0 +1,3 @@
+%pre.haml&= File.open('views/singlemultiexample.haml').read
+%div{:style => 'text-align: left; font-size: 80%;'}= haml :singlemultiexample, :layout => false
+%pre.html&= haml :singlemultiexample, :layout => false
